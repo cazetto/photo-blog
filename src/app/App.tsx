@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
-import UserPage from './features/User/UserPage';
+import CustomerPage from '../features/Customer/CustomerPage';
 
 const App = () => (
   <Router>
     <Switch>
       <Route path="/:userId">
-        <UserPage />
+        <CustomerPage />
       </Route>
     </Switch>
   </Router>
