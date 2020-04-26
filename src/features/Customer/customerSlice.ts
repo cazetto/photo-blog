@@ -3,13 +3,37 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getAllUsers } from '../../services/users';
 import { AppThunk } from '../../app/store';
 
-interface Customers {
+export type Customer = {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
+  phone: string;
+  website: string;
+  company: {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+  };
+};
+
+interface ICustomers {
   isLoading: boolean;
   error: string | null;
-  items: [];
+  items: Customer[];
 }
 
-const customerInitialState: Customers = {
+const customerInitialState: ICustomers = {
   isLoading: false,
   error: null,
   items: [],
@@ -19,16 +43,16 @@ const customerSlice = createSlice({
   name: 'customer',
   initialState: customerInitialState,
   reducers: {
-    getAllCustomersStart: (state: Customers) => {
+    getAllCustomersStart: (state: ICustomers) => {
       state.isLoading = true;
     },
-    getAllCustomersSuccess: (state: Customers, action: PayloadAction<[]>) => {
+    getAllCustomersSuccess: (state: ICustomers, action: PayloadAction<[]>) => {
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
     },
     getAllCustomersFailure: (
-      state: Customers,
+      state: ICustomers,
       action: PayloadAction<string>
     ) => {
       state.isLoading = false;
