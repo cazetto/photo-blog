@@ -10,16 +10,21 @@ import CustomerPage from '../features/Customer/CustomerPage';
 
 const GlobalStyle = <PrimerGlobalStyle />;
 
-const App = () => (
-  <ForceThemeProvider theme={themePrimer} globalStyle={GlobalStyle}>
-    <Router>
-      <Switch>
-        <Route path="/:userId">
-          <CustomerPage />
-        </Route>
-      </Switch>
-    </Router>
-  </ForceThemeProvider>
-);
+const App = () => {
+  return (
+    <ForceThemeProvider theme={themePrimer} globalStyle={GlobalStyle}>
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <CustomerPage />
+          </Route>
+          <Route path="/:userId">
+            <CustomerPage />
+          </Route>
+        </Switch>
+      </Router>
+    </ForceThemeProvider>
+  );
+};
 
 export default process.env.NODE_ENV === 'development' ? hot(App) : App;

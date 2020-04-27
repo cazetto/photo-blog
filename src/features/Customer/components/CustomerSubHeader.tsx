@@ -1,8 +1,13 @@
 import React, { FC } from 'react';
 import { Box, Text } from 'force-components';
 import { Link } from 'react-router-dom';
+import { Customer } from '../customerSlice';
 
-const CustomerSubHeader: FC<{}> = () => {
+interface ICustomerSubHeader {
+  customer?: Customer;
+}
+
+const CustomerSubHeader: FC<ICustomerSubHeader> = ({ customer }) => {
   return (
     <Box
       borderColor="colorGreen100"
@@ -10,13 +15,13 @@ const CustomerSubHeader: FC<{}> = () => {
       borderStyle="solid"
       display="flex"
     >
-      <Box pl="2" pr="2">
-        <Link to="/9/photos">
+      <Box pl="3" pr="3">
+        <Link to={`/${customer?.id}/photos`}>
           <Text>Fotos</Text>
         </Link>
       </Box>
-      <Box pl="2" pr="2">
-        <Link to="/9/posts">
+      <Box pl="3" pr="3">
+        <Link to={`/${customer?.id}/posts`}>
           <Text>Posts</Text>
         </Link>
       </Box>
