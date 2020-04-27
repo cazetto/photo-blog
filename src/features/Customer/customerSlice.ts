@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getAllUsers } from '../../services/users';
-import { AppThunk } from '../../app/store';
+import { AppThunk, AppDispatch } from '../../app/store';
 
 export type Customer = {
   id: number;
@@ -31,12 +31,14 @@ interface ICustomers {
   isLoading: boolean;
   error: string | null;
   items: Customer[];
+  current: Customer | undefined;
 }
 
 const customerInitialState: ICustomers = {
   isLoading: false,
   error: null,
   items: [],
+  current: undefined,
 };
 
 const customerSlice = createSlice({
@@ -58,6 +60,12 @@ const customerSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    setCurrentCustomer: (state: ICustomers, action: PayloadAction<string>) => {
+      const found = state.items.find((current) => {
+        return current.id.toString() === action.payload.toString();
+      });
+      state.current = found;
+    },
   },
 });
 
@@ -65,6 +73,7 @@ const {
   getAllCustomersStart,
   getAllCustomersSuccess,
   getAllCustomersFailure,
+  setCurrentCustomer,
 } = customerSlice.actions;
 
 export const fetchCustomers = (): AppThunk => async (dispatch) => {
@@ -75,6 +84,12 @@ export const fetchCustomers = (): AppThunk => async (dispatch) => {
   } catch (err) {
     dispatch(getAllCustomersFailure(err.toString()));
   }
+};
+
+export const selectCurrentCustomer = (userId: string) => (
+  dispatch: AppDispatch
+) => {
+  dispatch(setCurrentCustomer(userId));
 };
 
 export default customerSlice.reducer;
