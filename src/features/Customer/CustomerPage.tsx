@@ -47,30 +47,21 @@ const CustomerPage: FC<ICustomers> = () => {
   const firstCustomerId = customers?.items[0]?.id;
 
   return (
-    <Box display="flex" flexDirection="row">
-      <Box maxWidth="240px">
-        <CustomerList customers={customers.items} />
-      </Box>
-      <Box
-        borderColor="colorBlue200"
-        borderStyle="solid"
-        borderWidth="1"
-        width="700px"
-      >
-        <CustomerSubHeader customer={customers.current} />
-        <CustomerInfo customer={customers.current} />
-        <Switch>
-          <Route path="/" exact>
-            {firstCustomerId && <Redirect to={`/${firstCustomerId}/photos`} />}
-          </Route>
-          <Route path={`${path}/photos`}>
-            <CustomerPhotos />
-          </Route>
-          <Route path={`${path}/posts`}>
-            <CustomerPosts />
-          </Route>
-        </Switch>
-      </Box>
+    <Box display="flex" flexDirection="column">
+      <CustomerList customers={customers.items} />
+      <CustomerSubHeader customer={customers.current} />
+      <CustomerInfo customer={customers.current} />
+      <Switch>
+        <Route path="/" exact>
+          {firstCustomerId && <Redirect to={`/${firstCustomerId}/photos`} />}
+        </Route>
+        <Route path={`${path}/photos`}>
+          <CustomerPhotos />
+        </Route>
+        <Route path={`${path}/posts`}>
+          <CustomerPosts />
+        </Route>
+      </Switch>
     </Box>
   );
 };
