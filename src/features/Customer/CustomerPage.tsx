@@ -62,7 +62,7 @@ const CustomerPage: FC<ICustomers> = () => {
           <CustomerSubHeader customer={customers.current} />
           <CustomerInfo customer={customers.current} />
           <Switch>
-            <Route path="/">
+            <Route path="/" exact>
               {firstCustomerId && (
                 <Redirect to={`/${firstCustomerId}/photos`} />
               )}
