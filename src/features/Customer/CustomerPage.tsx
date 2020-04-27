@@ -8,6 +8,7 @@ import { RootState } from '../../app/store';
 import CustomerList from './components/CustomerList';
 import CustomerPhotos from './features/CustomerPhotos/CustomerPhotos';
 import CustomerPosts from './features/CustomerPosts/CustomerPosts';
+import CustomerSubHeader from './components/CustomerSubHeader';
 
 interface ICustomers {
   customers?: CustomersState;
@@ -39,6 +40,7 @@ const CustomerPage: FC<ICustomers> = () => {
           borderWidth="1"
           width="700px"
         >
+          <CustomerSubHeader />
           <Switch>
             <Route path={`${path}/photos`}>
               <CustomerPhotos />
