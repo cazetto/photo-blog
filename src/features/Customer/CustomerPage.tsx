@@ -7,6 +7,7 @@ import { fetchCustomers, CustomersState } from './customerSlice';
 import { RootState } from '../../app/store';
 import CustomerList from './components/CustomerList';
 import CustomerPhotos from './features/CustomerPhotos/CustomerPhotos';
+import CustomerPosts from './features/CustomerPosts/CustomerPosts';
 
 interface ICustomers {
   customers?: CustomersState;
@@ -43,7 +44,7 @@ const CustomerPage: FC<ICustomers> = () => {
               <CustomerPhotos />
             </Route>
             <Route path={`${path}/posts`}>
-              <div>Posts</div>
+              <CustomerPosts />
             </Route>
           </Switch>
         </Box>
