@@ -1,14 +1,25 @@
 import React, { FC, useEffect, memo } from 'react';
-import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  useParams,
+  useRouteMatch,
+  Redirect,
+} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import { Box } from 'force-components';
-import { fetchCustomers, CustomersState } from './customerSlice';
+import {
+  fetchCustomers,
+  selectCurrentCustomer,
+  CustomersState,
+} from './customerSlice';
 import { RootState } from '../../app/store';
 import CustomerList from './components/CustomerList';
 import CustomerPhotos from './features/CustomerPhotos/CustomerPhotos';
 import CustomerPosts from './features/CustomerPosts/CustomerPosts';
 import CustomerSubHeader from './components/CustomerSubHeader';
+import CustomerInfo from './components/CustomerInfo';
 
 interface ICustomers {
   customers?: CustomersState;
@@ -27,6 +38,14 @@ const CustomerPage: FC<ICustomers> = () => {
     dispatch(fetchCustomers());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (userId && customers.items.length) {
+      dispatch(selectCurrentCustomer(userId));
+    }
+  }, [dispatch, userId, customers.items.length]);
+
+  const firstCustomerId = customers?.items[0]?.id;
+
   return (
     <div>
       <h1>CustomerPage | customer userId {userId}</h1>
@@ -40,8 +59,14 @@ const CustomerPage: FC<ICustomers> = () => {
           borderWidth="1"
           width="700px"
         >
-          <CustomerSubHeader />
+          <CustomerSubHeader customer={customers.current} />
+          <CustomerInfo customer={customers.current} />
           <Switch>
+            <Route path="/">
+              {firstCustomerId && (
+                <Redirect to={`/${firstCustomerId}/photos`} />
+              )}
+            </Route>
             <Route path={`${path}/photos`}>
               <CustomerPhotos />
             </Route>
