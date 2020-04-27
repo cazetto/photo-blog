@@ -7,12 +7,14 @@ import {
   themePrimer,
 } from 'force-components';
 import CustomerPage from '../features/Customer/CustomerPage';
+import Header from './Header';
 
 const GlobalStyle = <PrimerGlobalStyle />;
 
 const App = () => {
   return (
     <ForceThemeProvider theme={themePrimer} globalStyle={GlobalStyle}>
+      <Header />
       <Router>
         <Switch>
           <Route path="/" exact>
