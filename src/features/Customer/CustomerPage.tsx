@@ -5,7 +5,8 @@ import _ from 'lodash';
 import { Box } from 'force-components';
 import { fetchCustomers, CustomersState } from './customerSlice';
 import { RootState } from '../../app/store';
-import CustomerList from './components/CustomerList/CustomerList';
+import CustomerList from './components/CustomerList';
+import CustomerPhotos from './features/CustomerPhotos/CustomerPhotos';
 
 interface ICustomers {
   customers?: CustomersState;
@@ -35,11 +36,11 @@ const CustomerPage: FC<ICustomers> = () => {
           borderColor="colorBlue200"
           borderStyle="solid"
           borderWidth="1"
-          width="100%"
+          width="700px"
         >
           <Switch>
             <Route path={`${path}/photos`}>
-              <div>Photos</div>
+              <CustomerPhotos />
             </Route>
             <Route path={`${path}/posts`}>
               <div>Posts</div>

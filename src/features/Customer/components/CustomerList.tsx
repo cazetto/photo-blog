@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { List, ListItem, Box, Text } from 'force-components';
 import { Link } from 'react-router-dom';
-import { Customer } from '../../customerSlice';
+import { Customer } from '../customerSlice';
 
 // import { StyledListItem as LI } from './CustomerList.styled';
 
