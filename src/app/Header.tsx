@@ -11,7 +11,7 @@ const Header: FC<{}> = () => {
       alignItems="center"
       p="2"
     >
-      <Text fontSize="22px" color="colorBlue200">
+      <Text fontSize="22px" color="colorBlue200" as="div">
         P H O T O B L O G
         <Box bg="colorBlue200" height="4px" opacity={0.5} />
       </Text>

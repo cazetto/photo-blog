@@ -29,7 +29,7 @@ const CustomerList: FC<ICustomersList> = ({ customers }) => {
                     {item.email}
                   </Text>
                   <Text fontSize="12px" m="0" mt="2">
-                    {item.company.name}{' '}
+                    {item.company.name}
                   </Text>
                 </Box>
               </Link>

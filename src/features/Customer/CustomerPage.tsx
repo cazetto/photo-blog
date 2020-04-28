@@ -49,8 +49,8 @@ const CustomerPage: FC<ICustomers> = () => {
   return (
     <Box display="flex" flexDirection="column">
       <CustomerList customers={customers.items} />
-      <CustomerSubHeader customer={customers.current} />
-      <CustomerInfo customer={customers.current} />
+      {customers.current && <CustomerSubHeader customer={customers.current} />}
+      {customers.current && <CustomerInfo customer={customers.current} />}
       <Switch>
         <Route path="/" exact>
           {firstCustomerId && <Redirect to={`/${firstCustomerId}/photos`} />}
