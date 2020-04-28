@@ -1,3 +1,10 @@
+This application was created usign [Force Design System](https://github.com/cazetto/force) that is developed by [me](https://github.com/cazetto) as a way to apply/improve my knoledges and to [learn in public](https://www.swyx.io/writing/learn-in-public).
+
+Here is the some other libraries that I've used to accomplish this job:
+Typescript, React, ReactRouterDom, Redux, ReduxToolkit, ReduxThunk, StyledComponents, Jest, React Testing Library.
+
+If you have suggestions, criticism or if you like something, open an Issue on Github Issues or email me in cazetto.andre@gmail.com.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
