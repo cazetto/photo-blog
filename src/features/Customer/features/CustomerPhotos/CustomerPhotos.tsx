@@ -29,17 +29,25 @@ const CustomerPhotos: FC<{}> = () => {
   if (photosData.length) {
     return (
       <ImageSlider items={photosData}>
-        <ImageSlider.Image />
+        <Box display="flex" justifyContent="center">
+          <ImageSlider.Image />
+        </Box>
         <Box>
-          <ImageSlider.Thumbs />
-          <ImageSlider.Prev>
-            <Octicon icon={ChevronLeft} />
-            Prev
-          </ImageSlider.Prev>
-          <ImageSlider.Next>
-            Next
-            <Octicon icon={ChevronRight} />
-          </ImageSlider.Next>
+          <ImageSlider.Thumbs
+            selectedColor="colorGray600"
+            children={{
+              prevControl: (
+                <ImageSlider.Prev>
+                  <Octicon icon={ChevronLeft} />
+                </ImageSlider.Prev>
+              ),
+              nextControl: (
+                <ImageSlider.Next>
+                  <Octicon icon={ChevronRight} />
+                </ImageSlider.Next>
+              ),
+            }}
+          />
         </Box>
       </ImageSlider>
     );
