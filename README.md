@@ -1,9 +1,38 @@
+# PhotoBlog
+
+## Introduction
+
 This application was created usign [Force Design System](https://github.com/cazetto/force) that is developed by [me](https://github.com/cazetto) as a way to apply/improve my knoledges and to [learn in public](https://www.swyx.io/writing/learn-in-public).
 
 Here is the some other libraries that I've used to accomplish this job:
 Typescript, React, ReactRouterDom, Redux, ReduxToolkit, ReduxThunk, StyledComponents, Jest, React Testing Library.
 
 If you have suggestions, criticism or if you like something, open an Issue on Github Issues or email me in cazetto.andre@gmail.com.
+
+## Folder Architecture
+
+I used a feature-based folder structure for this project, where each Feature is within the first Feature folder in the folder structure, within them only the components referring to that feature and the Subfeatures of that Feature and so recursively.
+
+### What is a feature and what is a component?
+
+#### Components
+
+All presentational components used in two or more places, expressive needs to be in the root component folder (src/components). It is a candidate to be moved to the components lib, Force Components in this case.
+
+Presentational components that will be used inside a feature need to be inside the components folder of this feature (feature/customers/components), if this component at some point of development became necessary in other feature in a parent feature, it need to be moved to the in a parent component folder, "cousin components" is not alowed. eg. If something used in src/features/customer turn necessary in src/features/news it need to be in src/features/components.
+
+#### Features
+
+Is a Feature each resource that is a screen or need anything else then presentational component, like a selector in the store, or need to access any external API, do some http request or only have any application logic.
+
+The "no cousins" rule is valid for the Features too. If you need a feature of other feature in a parent, you need to move it 1 level below.
+
+### Services
+
+All the external data need to be managed inside the Services folder in project root src/services.
+
+
+## Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
