@@ -27,9 +27,17 @@ Is a Feature each resource that is a screen or need anything else then presentat
 
 The "no cousins" rule is valid for the Features too. If you need a feature of other feature in a parent, you need to move it 1 level below.
 
-### Services
+#### Services
 
 All the external data need to be managed inside the Services folder in project root src/services.
+
+##### Influenced by
+
+[How to better organize your React applications?](https://medium.com/@alexmngn/how-to-better-organize-your-react-applications-2fd3ea1920f1)
+
+[How to use Redux on highly scalable javascript applications?](https://medium.com/@alexmngn/how-to-use-redux-on-highly-scalable-javascript-applications-4e4b8cb5ef38)
+
+[Why React developers should modularize their applications?](https://medium.com/@alexmngn/why-react-developers-should-modularize-their-applications-d26d381854c1)
 
 
 ## Create React App
