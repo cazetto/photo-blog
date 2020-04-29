@@ -6,11 +6,11 @@ export function getAllUsers() {
 }
 
 const USER_PHOTOS_URI = '/photos';
-export function getUserPhotos(userId: string) {
+export function getUserPhotos(userId: number) {
   return axiosInstance.get(`${USER_PHOTOS_URI}?albumId=${userId}`);
 }
 
 const USER_POSTS_URI = '/posts';
-export function getUserPosts(userId: string) {
+export function getUserPosts(userId: number) {
   return axiosInstance.get(`${USER_POSTS_URI}?userId=${userId}`);
 }

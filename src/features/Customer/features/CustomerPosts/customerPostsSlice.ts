@@ -53,10 +53,12 @@ const {
   getCustomerPostsFailure,
 } = customerPostsSlice.actions;
 
-export const fetchCustomerPosts = (): AppThunk => async (dispatch) => {
+export const fetchCustomerPosts = (customerId: number): AppThunk => async (
+  dispatch
+) => {
   try {
     dispatch(getCustomerPostsStart());
-    const customerPosts = await getUserPosts('1');
+    const customerPosts = await getUserPosts(customerId);
     dispatch(getCustomerPostsSuccess(customerPosts.data));
   } catch (err) {
     dispatch(getCustomerPostsFailure(err.toString()));
