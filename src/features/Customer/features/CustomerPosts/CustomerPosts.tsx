@@ -8,6 +8,10 @@ import {
   CustomerPost,
 } from './customerPostsSlice';
 import { RootState } from '../../../../app/store';
+import Loading from '../../../../components/Loading';
+import Message from '../../../../components/Message';
+
+const noPostsMessage = 'Não há posts!';
 
 const CustomerPosts: FC<{}> = () => {
   const dispatch = useDispatch();
@@ -19,26 +23,31 @@ const CustomerPosts: FC<{}> = () => {
     dispatch(fetchCustomerPosts());
   }, [dispatch]);
 
-  if (customerPosts.items.length) {
-    return (
-      <List>
-        {customerPosts.items.map((current: CustomerPost) => {
-          return (
-            <ListItem key={current.id}>
-              <Box
-                bg={current.id % 2 === 0 ? 'colorBlue100' : 'colorBlue200'}
-                p="3"
-              >
-                <Text fontWeight="600">{current.title}</Text>
-                <Text>{current.body}</Text>
-              </Box>
-            </ListItem>
-          );
-        })}
-      </List>
-    );
+  if (customerPosts.isLoading) {
+    return <Loading />;
   }
-  return <>Loading</>;
+
+  if (!customerPosts.items.length) {
+    return <Message text={noPostsMessage} />;
+  }
+
+  return (
+    <List>
+      {customerPosts.items.map((current: CustomerPost) => {
+        return (
+          <ListItem key={current.id}>
+            <Box
+              bg={current.id % 2 === 0 ? 'colorBlue100' : 'colorBlue200'}
+              p="3"
+            >
+              <Text fontWeight="600">{current.title}</Text>
+              <Text>{current.body}</Text>
+            </Box>
+          </ListItem>
+        );
+      })}
+    </List>
+  );
 };
 
 export default CustomerPosts;

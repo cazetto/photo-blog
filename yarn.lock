@@ -5125,10 +5125,19 @@ for-own@^0.1.3:
   dependencies:
     for-in "^1.0.1"
 
-force-components@0.0.23:
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/force-components/-/force-components-0.0.23.tgz#4ed84ae54428af620bea7e44f0ec8860f15e5cc0"
-  integrity sha512-wBPsUvp/hYkMgoeMgJV+uXKCcO3pJ32l/egfNsfZEhSLa2bJ6p4ejvCiTTZKeBw5Ktu4ykZC9Gt5pfyt8bJLzQ==
+force-components@0.0.25:
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/force-components/-/force-components-0.0.25.tgz#a8cb6f05a8c847b4df288f0451fa4c078766ccc6"
+  integrity sha512-s4sn8LAPl/xVIYR+bT1OZg7iAObqw2qAmuUHKWjxY+7EaDLyZhXvVBJMQt0xuKG6PezOTWcDWeGPTwHIBgK3EQ==
+  dependencies:
+    "@primer/octicons-react" "^9.6.0"
+    force-components "^0.0.16"
+    force-tokens "^0.0.6"
+
+force-components@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/force-components/-/force-components-0.0.16.tgz#d53e01ca1636bce07a1a8f8e3aa214b99f0742e3"
+  integrity sha512-YOyQVXTt1oNS1Ojr444geesdMMy/mn7tybvsg1Q8KwS2L3amAoWczCxyGYVN1Jirj9N05fKb1rxJK/FWPFXV+Q==
   dependencies:
     "@primer/octicons-react" "^9.6.0"
     force-tokens "^0.0.6"
