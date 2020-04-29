@@ -26,6 +26,8 @@ interface ICustomers {
   customers?: CustomersState;
 }
 
+const usersOnSideWidth = '200px';
+
 const CustomerPage: FC<ICustomers> = () => {
   const { userId } = useParams();
   const { path } = useRouteMatch();
@@ -52,26 +54,46 @@ const CustomerPage: FC<ICustomers> = () => {
   }
 
   return (
-    <Box height="100%" display="flex" flexDirection="column">
-      <Box height="130px">
+    <Box
+      display="flex"
+      flexDirection={{
+        xs: 'column',
+        md: 'row',
+      }}
+    >
+      <Box
+        width={{
+          xs: '100%',
+          md: usersOnSideWidth,
+        }}
+      >
         <CustomerList
           customers={customers.items}
           selectedCustomerId={customers.current?.id}
         />
       </Box>
-      {customers.current && <CustomerSubHeader customer={customers.current} />}
-      {customers.current && <CustomerInfo customer={customers.current} />}
-      <Switch>
-        <Route path="/" exact>
-          {firstCustomerId && <Redirect to={`/${firstCustomerId}/photos`} />}
-        </Route>
-        <Route path={`${path}/photos`}>
-          <CustomerPhotos />
-        </Route>
-        <Route path={`${path}/posts`}>
-          <CustomerPosts />
-        </Route>
-      </Switch>
+      <Box
+        width={{
+          xs: '100%',
+          md: `calc(100% - ${usersOnSideWidth})`,
+        }}
+      >
+        {customers.current && (
+          <CustomerSubHeader customer={customers.current} />
+        )}
+        {customers.current && <CustomerInfo customer={customers.current} />}
+        <Switch>
+          <Route path="/" exact>
+            {firstCustomerId && <Redirect to={`/${firstCustomerId}/photos`} />}
+          </Route>
+          <Route path={`${path}/photos`}>
+            <CustomerPhotos />
+          </Route>
+          <Route path={`${path}/posts`}>
+            <CustomerPosts />
+          </Route>
+        </Switch>
+      </Box>
     </Box>
   );
 };

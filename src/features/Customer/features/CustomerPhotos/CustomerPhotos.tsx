@@ -48,20 +48,32 @@ const CustomerPhotos: FC<{}> = () => {
         <ImageSlider.Image />
       </Box>
       <Box>
-        <ImageSlider.Thumbs selectedColor="colorGray600">
-          {{
-            prevControl: (
-              <ImageSlider.Prev>
-                <Octicon icon={ChevronLeft} />
-              </ImageSlider.Prev>
-            ),
-            nextControl: (
-              <ImageSlider.Next>
-                <Octicon icon={ChevronRight} />
-              </ImageSlider.Next>
-            ),
-          }}
-        </ImageSlider.Thumbs>
+        <Box display="flex">
+          <Box
+            width="100%"
+            display="flex"
+            flexDirection="row"
+            overflowX="scroll"
+          >
+            <ImageSlider.Thumbs selectedColor="colorGray600">
+              {{
+                prevControl: (
+                  <ImageSlider.Prev>
+                    <Octicon icon={ChevronLeft} />
+                  </ImageSlider.Prev>
+                ),
+                nextControl: (
+                  <ImageSlider.Next>
+                    <Octicon icon={ChevronRight} />
+                  </ImageSlider.Next>
+                ),
+              }}
+            </ImageSlider.Thumbs>
+          </Box>
+          <ImageSlider.Next>
+            <Octicon icon={ChevronRight} />
+          </ImageSlider.Next>
+        </Box>
       </Box>
     </ImageSlider>
   );

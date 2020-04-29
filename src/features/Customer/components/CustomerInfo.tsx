@@ -8,7 +8,13 @@ interface ICustomersInfo {
 
 const CustomerInfo: FC<ICustomersInfo> = ({ customer }) => {
   return (
-    <Box borderColor="colorBlue100" borderWidth="1" borderStyle="solid" p="3">
+    <Box
+      borderColor="colorBlue100"
+      borderWidth="1"
+      borderStyle="solid"
+      p="3"
+      m="1"
+    >
       <Text fontWeight="600">Name: {customer.name}</Text>
       <Text fontSize="12px" as="div">
         <Text as="span" fontWeight="600">
