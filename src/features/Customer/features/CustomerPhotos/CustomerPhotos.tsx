@@ -8,6 +8,10 @@ import {
   CustomerPhoto,
 } from './customerPhotosSlice';
 import { RootState } from '../../../../app/store';
+import Loading from '../../../../components/Loading';
+import Message from '../../../../components/Message';
+
+const noPhotosMessage = 'Não há fotos!';
 
 const CustomerPhotos: FC<{}> = () => {
   const dispatch = useDispatch();
@@ -26,32 +30,37 @@ const CustomerPhotos: FC<{}> = () => {
     image: current.url,
   }));
 
-  if (photosData.length) {
-    return (
-      <ImageSlider items={photosData}>
-        <Box display="flex" justifyContent="center">
-          <ImageSlider.Image />
-        </Box>
-        <Box>
-          <ImageSlider.Thumbs selectedColor="colorGray600">
-            {{
-              prevControl: (
-                <ImageSlider.Prev>
-                  <Octicon icon={ChevronLeft} />
-                </ImageSlider.Prev>
-              ),
-              nextControl: (
-                <ImageSlider.Next>
-                  <Octicon icon={ChevronRight} />
-                </ImageSlider.Next>
-              ),
-            }}
-          </ImageSlider.Thumbs>
-        </Box>
-      </ImageSlider>
-    );
+  if (customerPhotos.isLoading) {
+    return <Loading />;
   }
-  return <>Loading</>;
+
+  if (!customerPhotos.items.length) {
+    return <Message text={noPhotosMessage} />;
+  }
+
+  return (
+    <ImageSlider items={photosData}>
+      <Box display="flex" justifyContent="center">
+        <ImageSlider.Image />
+      </Box>
+      <Box>
+        <ImageSlider.Thumbs selectedColor="colorGray600">
+          {{
+            prevControl: (
+              <ImageSlider.Prev>
+                <Octicon icon={ChevronLeft} />
+              </ImageSlider.Prev>
+            ),
+            nextControl: (
+              <ImageSlider.Next>
+                <Octicon icon={ChevronRight} />
+              </ImageSlider.Next>
+            ),
+          }}
+        </ImageSlider.Thumbs>
+      </Box>
+    </ImageSlider>
+  );
 };
 
 export default CustomerPhotos;

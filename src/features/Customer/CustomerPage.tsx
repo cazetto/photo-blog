@@ -20,6 +20,7 @@ import CustomerPhotos from './features/CustomerPhotos/CustomerPhotos';
 import CustomerPosts from './features/CustomerPosts/CustomerPosts';
 import CustomerSubHeader from './components/CustomerSubHeader';
 import CustomerInfo from './components/CustomerInfo';
+import Loading from '../../components/Loading';
 
 interface ICustomers {
   customers?: CustomersState;
@@ -46,9 +47,18 @@ const CustomerPage: FC<ICustomers> = () => {
 
   const firstCustomerId = customers?.items[0]?.id;
 
+  if (customers.isLoading) {
+    return <Loading />;
+  }
+
   return (
-    <Box display="flex" flexDirection="column">
-      <CustomerList customers={customers.items} />
+    <Box height="100%" display="flex" flexDirection="column">
+      <Box height="130px">
+        <CustomerList
+          customers={customers.items}
+          selectedCustomerId={customers.current?.id}
+        />
+      </Box>
       {customers.current && <CustomerSubHeader customer={customers.current} />}
       {customers.current && <CustomerInfo customer={customers.current} />}
       <Switch>
