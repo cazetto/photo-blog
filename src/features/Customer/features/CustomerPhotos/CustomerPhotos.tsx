@@ -21,9 +21,13 @@ const CustomerPhotos: FC<{}> = () => {
     }
   );
 
+  const customerId: number | undefined = useSelector((props: RootState) => {
+    return props.customers.current?.id;
+  });
+
   useEffect(() => {
-    dispatch(fetchCustomerPhotos());
-  }, [dispatch]);
+    customerId && dispatch(fetchCustomerPhotos(customerId));
+  }, [dispatch, customerId]);
 
   const photosData = customerPhotos?.items?.map((current: CustomerPhoto) => ({
     thumb: current.thumbnailUrl,
