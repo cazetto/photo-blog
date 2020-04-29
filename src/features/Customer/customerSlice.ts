@@ -69,7 +69,7 @@ const customerSlice = createSlice({
   },
 });
 
-const {
+export const {
   getAllCustomersStart,
   getAllCustomersSuccess,
   getAllCustomersFailure,
