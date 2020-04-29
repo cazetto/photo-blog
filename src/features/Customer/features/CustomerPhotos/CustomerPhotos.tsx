@@ -33,9 +33,8 @@ const CustomerPhotos: FC<{}> = () => {
           <ImageSlider.Image />
         </Box>
         <Box>
-          <ImageSlider.Thumbs
-            selectedColor="colorGray600"
-            children={{
+          <ImageSlider.Thumbs selectedColor="colorGray600">
+            {{
               prevControl: (
                 <ImageSlider.Prev>
                   <Octicon icon={ChevronLeft} />
@@ -47,7 +46,7 @@ const CustomerPhotos: FC<{}> = () => {
                 </ImageSlider.Next>
               ),
             }}
-          />
+          </ImageSlider.Thumbs>
         </Box>
       </ImageSlider>
     );
