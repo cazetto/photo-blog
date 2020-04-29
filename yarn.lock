@@ -5125,10 +5125,10 @@ for-own@^0.1.3:
   dependencies:
     for-in "^1.0.1"
 
-force-components@0.0.25:
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/force-components/-/force-components-0.0.25.tgz#a8cb6f05a8c847b4df288f0451fa4c078766ccc6"
-  integrity sha512-s4sn8LAPl/xVIYR+bT1OZg7iAObqw2qAmuUHKWjxY+7EaDLyZhXvVBJMQt0xuKG6PezOTWcDWeGPTwHIBgK3EQ==
+force-components@0.0.26:
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/force-components/-/force-components-0.0.26.tgz#83b3409fb0d1f5e9363519606a4845f3fd7d4c8e"
+  integrity sha512-kE6WUBIQRw3p1em3itha8q6HyKo0qNX0S/pe+RKDIcO6dFKotsyyC0YfQ9RLEkqAb5FEUr0z49d05NEESY+Olw==
   dependencies:
     "@primer/octicons-react" "^9.6.0"
     force-components "^0.0.16"
