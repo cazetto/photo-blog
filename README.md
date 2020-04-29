@@ -39,6 +39,11 @@ All the external data need to be managed inside the Services folder in project r
 
 [Why React developers should modularize their applications?](https://medium.com/@alexmngn/why-react-developers-should-modularize-their-applications-d26d381854c1)
 
+##### But
+
+[Don’t obsess](https://twitter.com/dan_abramov/status/783428282666614784)
+
+[My journey toward a maintainable project structure for React/Redux](https://medium.com/hackernoon/my-journey-toward-a-maintainable-project-structure-for-react-redux-b05dfd999b5)
 
 ## Create React App
 
