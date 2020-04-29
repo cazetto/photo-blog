@@ -13,17 +13,23 @@ const CustomerList: FC<ICustomersList> = ({
   selectedCustomerId,
 }) => {
   return (
-    <Box height="130px" display="block" overflowX="auto" overflowY="hidden">
-      <Box display="flex" flexDirection="row" p="0">
-        {customers?.map((item: Customer) => {
-          return (
-            <CustomerListItem
-              item={item}
-              isSelected={selectedCustomerId === item.id}
-            />
-          );
-        })}
-      </Box>
+    <Box
+      display="flex"
+      flexDirection={{ sm: 'row', md: 'column' }}
+      overflowX="auto"
+      overflowY="hidden"
+      ml="1"
+      mt="1"
+      mb="1"
+    >
+      {customers?.map((item: Customer) => {
+        return (
+          <CustomerListItem
+            item={item}
+            isSelected={selectedCustomerId === item.id}
+          />
+        );
+      })}
     </Box>
   );
 };
@@ -33,7 +39,7 @@ const CustomerListItem: FC<{ item: Customer; isSelected: boolean }> = ({
   isSelected,
 }) => {
   return (
-    <Box key={item.id} m="1">
+    <Box key={item.id}>
       <Link to={`/${item.id}/photos`}>
         <Box
           p="3"
@@ -41,7 +47,8 @@ const CustomerListItem: FC<{ item: Customer; isSelected: boolean }> = ({
           borderColor="colorBlue200"
           borderStyle="solid"
           borderWidth="1"
-          height="120px"
+          height={{ xs: '120px', sm: '120px', md: 'auto' }}
+          maxHeight={{ xs: '120px', sm: '120px', md: '120px' }}
         >
           <Text fontWeight="600" m="0">
             {item.name}
