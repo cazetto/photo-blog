@@ -13,7 +13,7 @@ const CustomerSubHeader: FC<ICustomerSubHeader> = ({ customer }) => {
   const matchPosts: boolean = Boolean(useRouteMatch('/:userId/posts'));
 
   return (
-    <Box m="1" display="flex" justifyContent="center">
+    <Box m="1" display="flex">
       <Box pl="3" pr="3" bg={matchPhotos ? 'colorBlue100' : undefined}>
         <Link to={`/${customer?.id}/photos`}>
           <Text>Fotos</Text>

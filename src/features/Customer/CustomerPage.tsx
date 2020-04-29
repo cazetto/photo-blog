@@ -79,7 +79,16 @@ const CustomerPage: FC<ICustomers> = () => {
         }}
       >
         {customers.current && (
-          <CustomerSubHeader customer={customers.current} />
+          <Box
+            width={{
+              xs: '100%',
+              md: `calc(100% - ${usersOnSideWidth})`,
+            }}
+            display="flex"
+            justifyContent="center"
+          >
+            <CustomerSubHeader customer={customers.current} />
+          </Box>
         )}
         {customers.current && <CustomerInfo customer={customers.current} />}
         <Switch>
