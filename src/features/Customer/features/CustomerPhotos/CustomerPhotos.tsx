@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from 'react';
+import styled from 'styled-components';
 import { Box, ImageSlider } from 'force-components';
 import Octicon, { ChevronLeft, ChevronRight } from '@primer/octicons-react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -47,36 +48,27 @@ const CustomerPhotos: FC<{}> = () => {
       <Box display="flex" justifyContent="center">
         <ImageSlider.Image />
       </Box>
-      <Box>
-        <Box display="flex">
-          <Box
-            width="100%"
-            display="flex"
-            flexDirection="row"
-            overflowX="scroll"
-          >
-            <ImageSlider.Thumbs selectedColor="colorGray600">
-              {{
-                prevControl: (
-                  <ImageSlider.Prev>
-                    <Octicon icon={ChevronLeft} />
-                  </ImageSlider.Prev>
-                ),
-                nextControl: (
-                  <ImageSlider.Next>
-                    <Octicon icon={ChevronRight} />
-                  </ImageSlider.Next>
-                ),
-              }}
-            </ImageSlider.Thumbs>
-          </Box>
-          <ImageSlider.Next>
-            <Octicon icon={ChevronRight} />
-          </ImageSlider.Next>
-        </Box>
-      </Box>
+      <ImageSlider.Thumbs selectedColor="colorGray600">
+        {{
+          prevControl: (
+            <ImageSlider.Prev>
+              <CustomOcticon icon={ChevronLeft} />
+            </ImageSlider.Prev>
+          ),
+          nextControl: (
+            <ImageSlider.Next>
+              <CustomOcticon icon={ChevronRight} />
+            </ImageSlider.Next>
+          ),
+        }}
+      </ImageSlider.Thumbs>
     </ImageSlider>
   );
 };
+
+const CustomOcticon = styled(Octicon)`
+  padding: 14px;
+  outline: none;
+`;
 
 export default CustomerPhotos;
