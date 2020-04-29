@@ -17,35 +17,43 @@ const CustomerList: FC<ICustomersList> = ({
       <Box display="flex" flexDirection="row" p="0">
         {customers?.map((item: Customer) => {
           return (
-            <Box key={item.id} m="1">
-              <Link to={`/${item.id}/photos`}>
-                <Box
-                  p="3"
-                  bg={
-                    selectedCustomerId === item.id
-                      ? 'colorBlue200'
-                      : 'colorBlue000'
-                  }
-                  borderColor="colorBlue200"
-                  borderStyle="solid"
-                  borderWidth="1"
-                  height="120px"
-                >
-                  <Text fontWeight="600" m="0">
-                    {item.name}
-                  </Text>
-                  <Text fontSize="12px" m="0" mt="2">
-                    {item.email}
-                  </Text>
-                  <Text fontSize="12px" m="0" mt="2">
-                    {item.company.name}
-                  </Text>
-                </Box>
-              </Link>
-            </Box>
+            <CustomerListItem
+              item={item}
+              isSelected={selectedCustomerId === item.id}
+            />
           );
         })}
       </Box>
+    </Box>
+  );
+};
+
+const CustomerListItem: FC<{ item: Customer; isSelected: boolean }> = ({
+  item,
+  isSelected,
+}) => {
+  return (
+    <Box key={item.id} m="1">
+      <Link to={`/${item.id}/photos`}>
+        <Box
+          p="3"
+          bg={isSelected ? 'colorBlue200' : 'colorBlue000'}
+          borderColor="colorBlue200"
+          borderStyle="solid"
+          borderWidth="1"
+          height="120px"
+        >
+          <Text fontWeight="600" m="0">
+            {item.name}
+          </Text>
+          <Text fontSize="12px" m="0" mt="2">
+            {item.email}
+          </Text>
+          <Text fontSize="12px" m="0" mt="2">
+            {item.company.name}
+          </Text>
+        </Box>
+      </Link>
     </Box>
   );
 };
