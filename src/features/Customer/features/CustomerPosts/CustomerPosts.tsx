@@ -19,9 +19,13 @@ const CustomerPosts: FC<{}> = () => {
     return props.customerPosts;
   });
 
+  const customerId: number | undefined = useSelector((props: RootState) => {
+    return props.customers.current?.id;
+  });
+
   useEffect(() => {
-    dispatch(fetchCustomerPosts());
-  }, [dispatch]);
+    customerId && dispatch(fetchCustomerPosts(customerId));
+  }, [dispatch, customerId]);
 
   if (customerPosts.isLoading) {
     return <Loading />;

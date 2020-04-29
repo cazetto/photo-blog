@@ -54,10 +54,12 @@ const {
   getCustomerPhotosFailure,
 } = customerPhotosSlice.actions;
 
-export const fetchCustomerPhotos = (): AppThunk => async (dispatch) => {
+export const fetchCustomerPhotos = (customerId: number): AppThunk => async (
+  dispatch
+) => {
   try {
     dispatch(getCustomerPhotosStart());
-    const customerPhotos = await getUserPhotos('1');
+    const customerPhotos = await getUserPhotos(customerId);
     dispatch(getCustomerPhotosSuccess(customerPhotos.data));
   } catch (err) {
     dispatch(getCustomerPhotosFailure(err.toString()));
