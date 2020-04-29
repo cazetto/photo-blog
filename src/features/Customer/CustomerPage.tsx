@@ -47,8 +47,13 @@ const CustomerPage: FC<ICustomers> = () => {
   const firstCustomerId = customers?.items[0]?.id;
 
   return (
-    <Box display="flex" flexDirection="column">
-      <CustomerList customers={customers.items} />
+    <Box height="100%" display="flex" flexDirection="column">
+      <Box height="130px">
+        <CustomerList
+          customers={customers.items}
+          selectedCustomerId={customers.current?.id}
+        />
+      </Box>
       {customers.current && <CustomerSubHeader customer={customers.current} />}
       {customers.current && <CustomerInfo customer={customers.current} />}
       <Switch>

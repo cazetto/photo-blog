@@ -5,11 +5,15 @@ import Link from '../../../components/Link';
 
 interface ICustomersList {
   customers?: Customer[];
+  selectedCustomerId?: number | undefined;
 }
 
-const CustomerList: FC<ICustomersList> = ({ customers }) => {
+const CustomerList: FC<ICustomersList> = ({
+  customers,
+  selectedCustomerId,
+}) => {
   return (
-    <Box display="block" overflowX="auto">
+    <Box height="130px" display="block" overflowX="auto" overflowY="hidden">
       <Box display="flex" flexDirection="row" p="0">
         {customers?.map((item: Customer) => {
           return (
@@ -17,6 +21,11 @@ const CustomerList: FC<ICustomersList> = ({ customers }) => {
               <Link to={`/${item.id}/photos`}>
                 <Box
                   p="3"
+                  bg={
+                    selectedCustomerId === item.id
+                      ? 'colorBlue200'
+                      : 'colorBlue000'
+                  }
                   borderColor="colorBlue200"
                   borderStyle="solid"
                   borderWidth="1"
